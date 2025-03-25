@@ -32,10 +32,7 @@ export default function ImageEditor() {
     console.log(croppedAreaPercentage, croppedAreaPixels);
     setCroppedArea(croppedAreaPixels);
   }
-
-  // const rotateImage = () => setRotation((prev) => prev + 90);
-  // const flipHorizontally = () => setFlipX((prev) => prev * -1);
-  // const flipVertically = () => setFlipY((prev) => prev * -1);
+  
   const replaceImage = () => inputRef.current.click();
 
   return (
@@ -60,8 +57,6 @@ export default function ImageEditor() {
                 onCropChange={setCrop}
                 onZoomChange={setZoom}
                 onCropComplete={onCropComplete}
-                // objectFit="contain"
-                // transform={`scaleX(${flipX}) scaleY(${flipY})`}
                 style={{
                   containerStyle: {
                     transform: `scaleX(${flipX ? -1 : 1}) scaleY(${flipY ? -1 : 1})`,
@@ -79,7 +74,6 @@ export default function ImageEditor() {
               <div className="flex justify-center items-center w-full gap-4">
                 <p>Rotate</p>
                 <Slider value={rotation} min={0} max={360} step={1}
-                // aria-labelledby="rotation-slider" sx={{ width: 300 }}
                 onChange={(e, newValue) => setRotation(newValue)}
                 />
               </div>
@@ -88,7 +82,6 @@ export default function ImageEditor() {
         ):(
           <div className='w-full h-full bg-contain bg-center bg-no-repeat'
           style={{ backgroundImage: `url(${upload})` }}>
-            {/* <img src={upload} alt="UploadImage" className='' /> */}
           </div>
         )}
       </div>
